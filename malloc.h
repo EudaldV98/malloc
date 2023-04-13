@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:52:06 by jvaquer           #+#    #+#             */
-/*   Updated: 2023/03/10 15:04:43 by jvaquer          ###   ########.fr       */
+/*   Updated: 2023/04/13 11:20:16 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,16 @@ typedef struct		s_block
 ** Methods
 */
 
-void	*malloc(size_t size);
-void	*calloc(size_t count, size_t size);
-void	free(void *ptr);
+void			*malloc(size_t size);
+void			*calloc(size_t count, size_t size);
+void			free(void *ptr);
+
+t_heap_group    get_heap_group_from_block_size(size_t size);
+
+void			set_block(t_block *tmp, size_t size);
+static void     divide_block(size_t size, t_block *block, t_heap *heap);
+t_block			*try_fill_free_block(size_t size);
+void            find_free_block(size_t size, t_heap **in_heap, t_block **in_block);
+
 
 #endif
